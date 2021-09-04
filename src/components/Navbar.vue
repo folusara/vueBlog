@@ -1,0 +1,63 @@
+<template>
+  <main>
+            <el-menu  :default-active="activeIndex" id="navbarNavAltMarkup"   background-color="white"
+                    text-color="rgb(28,35,44)"
+                    active-text-color="red"
+                    class="el-menu-demo" mode="horizontal" @select="handleSelect">
+                             <el-menu-item class="itemM" index="1"> <router-link to="/home" >  <span id="dev">Dev</span>Blogs </router-link> </el-menu-item>
+                           <el-menu-item class="itemM" index="2">  <router-link to="/"> Home </router-link>  </el-menu-item>
+                            <el-menu-item class="itemM" index="3">  <router-link to="/create"> Create Blog </router-link>  </el-menu-item>     
+                            <el-menu-item class="itemM" index="4" > <router-link to="/allblogs">  Blogs </router-link> </el-menu-item>
+                            <el-menu-item class="itemM" index="5"><router-link to="/contact"> Contact </router-link></el-menu-item>
+                            <el-row>   
+                            <!-- <div class="line"></div>    -->
+                                <el-button plain round> Log In <span class="fa fa-sign-in-alt"></span></el-button>
+                                <el-button type="danger" round> Sign Up <span class="fa fa-user-plus"></span></el-button>       
+                            </el-row>
+                    
+                  
+            </el-menu>
+
+     <router-view/>
+  </main>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+/* nav{
+    background-color: white;
+    color: black;
+    height: 70px;
+    align-content: flex-end;
+    border-style: solid;
+    border-bottom-color: rgb(213,224,213);
+    border-bottom-width: 1px;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+} */
+#dev{
+    color: red;
+}
+
+:link{
+    text-decoration: none;
+    font-weight: 300;
+
+}
+
+.itemM{
+    color: white;
+}
+
+#navbarNavAltMarkup{
+   display: flex;
+   flex-direction: row;
+    align-content: flex-end;
+}
+</style>
