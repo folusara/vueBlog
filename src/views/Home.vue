@@ -110,4 +110,43 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 #learn{
   margin-top: 70px;
 }
+
+@media only screen and (max-width: 600px) {
+ #blackheader{
+   display: flex;
+   flex-direction: column;
+ }
+ #picDiv{
+   display: none;
+ }
+ #welDiv > h1{
+font-size: 30px;
+margin-top: -80px;
+margin-left: -100px;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#welDiv  > p{
+  font-weight: 20;
+  font-size: 20px;
+margin-left: -100px;
+
+}
+#second > h1{
+font-size: 20px;
+margin-top: -50px;
+margin-left: -0px;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#second  > p{
+  font-weight: 20;
+  font-size: 15px;
+}
+
+#second{
+  margin-top: -20px;
+  margin-left: -2%;
+  width: 105%;
+  height: 250px;
+}
+}
 </style>

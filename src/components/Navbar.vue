@@ -11,8 +11,8 @@
                             <el-menu-item class="itemM" index="5"><router-link to="/contact"> Contact </router-link></el-menu-item>
                             <el-row>   
                             <!-- <div class="line"></div>    -->
-                                <el-button plain round> Log In <span class="fa fa-sign-in-alt"></span></el-button>
-                                <el-button type="danger" round> Sign Up <span class="fa fa-user-plus"></span></el-button>       
+                             <router-link to="/signin"> <el-button  plain round> Log In <span class="fa fa-sign-in-alt"></span></el-button></router-link> 
+                              <router-link to="/signin">  <el-button type="danger" class="bro"  round> Sign Up <span class="fa fa-user-plus"></span></el-button>  </router-link>     
                             </el-row>
                     
                   
@@ -49,6 +49,10 @@ export default {
     text-decoration: none;
     font-weight: 300;
 
+}
+
+.bro{
+    margin-left: 50px;
 }
 
 .itemM{

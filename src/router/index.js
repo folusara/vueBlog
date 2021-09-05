@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import CreateBlog from '../views/createBlog.vue'
 import Allblogs from '../views/allblogs.vue'
 import Contact from '../views/contact.vue'
+import Signin from '../views/signIn.vue'
 import Notfound from '../views/notfound.vue'
 
 
@@ -12,6 +13,7 @@ const routes = [
   { path: '/create', component: CreateBlog },
   { path: '/allblogs', component: Allblogs },
   { path: '/contact', component: Contact },
+  { path: '/signin', component: Signin },
   { path: '/:catchAll(.*)', redirect:Notfound},
 
 ]
