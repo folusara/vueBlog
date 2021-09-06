@@ -16,7 +16,7 @@
                       ]"  >
                 <div style="display:flex;flex-direction:row">
                   <Message />
-                   <el-input id="inp" prefix-icon="el-icon-message" placeholder="Please input Email" v-model="dynamicValidateForm.email"></el-input>
+                   <el-input id="inp1" prefix-icon="el-icon-message" placeholder="Please input Email" v-model="dynamicValidateForm.email"></el-input>
                 
                 </div>
                  </el-form-item>
@@ -30,7 +30,7 @@
                       <el-button type="danger"  prefix-icon="el-icon-password" id="butt" round @click="submitForm('dynamicValidateForm')">Submit</el-button>
                   </el-form-item>
 
-                  <h5>Not Registered with</h5>
+                      <router-link class="rout" to="/signup"> <h5> You do not have a <span id="dev">Dev</span>Blogs account? Sign Up </h5></router-link>
                 </el-form>
 
                 </div>
@@ -91,28 +91,42 @@ p{
 text-align: center;
 }
 
+#inp1{
+  border-width: 0 0 1px 0;
+  width: 300px;
+  margin-bottom: -30px;
+  margin-left: -0px;
+}
 #inp{
   border-width: 0 0 1px 0;
-  width: 400px;
+  width: 300px;
   margin-bottom: -30px;
+  margin-left: 0px;
 }
 
 
 #butt{
  margin-top: -60px;
   width: 400px;
-  margin-left: 20px;
+  margin-left: 0px;
 }
 #signIn{
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 70%;
   height: 450px;
-  margin-left: 10%;
+  margin-left: 15%;
   margin-top: 0%;
 }
 #dev{
     color: red;
+}
+a{
+  color: black;
+}
+.rout{
+  color: black;
+  text-align: center;
 }
 #picDiv{
   height: 450px;
@@ -126,10 +140,7 @@ text-align: center;
 }
 #formDiv{
   height: 450px;
-  width: 50%;
-  /* background-image: url("../assets/img/notepad-3297994.jpg");
-  background-repeat: no-repeat;
-  background-size: cover; */
+  width: 55%;
   margin-left: -0px;
   margin-top: 0px;
 

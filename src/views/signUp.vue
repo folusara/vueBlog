@@ -1,24 +1,24 @@
 <template>
 
   <div id="bodyy">
-      <div id="signIn" class="shadow">
+      <div id="signUp" class="shadow">
            <div id="formDiv">
            
             
               <h3 class="mt-5" >Sign Up with <span id="dev">Dev</span>Blogs</h3>
-                <div style="margin-top:-20px">
+                <div style="margin-top:20px">
                   <el-form
                     @submit.prevent="submitForm()"   :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="50px" class="demo-dynamic">
-                 
+                   <el-form-item prop="email"   :rules="[
+                        { required: true, message: 'Please input Your name', trigger: 'blur' },
+                     ]"  >          
+                   <el-input id="inp" prefix-icon="el-icon-user-solid" placeholder="Please input your name" v-model="dynamicValidateForm.name"></el-input>
+                 </el-form-item>
                     <el-form-item prop="email"   :rules="[
                         { required: true, message: 'Please input email address', trigger: 'blur' },
                         { type: 'email', message: 'Please input correct email address', trigger: ['blur', 'change'] }
-                      ]"  >
-                <div style="display:flex;flex-direction:row">
-                  <Message />
+                      ]"  >          
                    <el-input id="inp" prefix-icon="el-icon-message" placeholder="Please input Email" v-model="dynamicValidateForm.email"></el-input>
-                
-                </div>
                  </el-form-item>
                    <el-form-item prop="password"  :rules="[
                         { required: true, message: 'Please input password', trigger: 'blur' },
@@ -30,7 +30,7 @@
                       <el-button type="danger"  prefix-icon="el-icon-password" id="butt" round @click="submitForm('dynamicValidateForm')">Submit</el-button>
                   </el-form-item>
 
-                  <h5> <router-link to="/signin">Have an <span id="dev">Dev</span>Blogs? Log In </router-link></h5>
+                  <router-link class="rout" to="/signin"> <h5> Have a <span id="dev">Dev</span>Blogs account? Log In </h5></router-link>
                 </el-form>
 
                 </div>
@@ -46,6 +46,7 @@ export default {
    data() {
       return {
         dynamicValidateForm: {
+          name:'',
           email: '',
           password:''
         },
@@ -80,7 +81,13 @@ export default {
   margin-left: -15px;
   padding-top: 6%;
 }
-
+a{
+  color: black;
+}
+.rout{
+  color: black;
+  text-align: center;
+}
 h3{
 text-align: center;
 margin-top: 50px;
@@ -94,36 +101,41 @@ text-align: center;
 
 #inp{
   border-width: 0 0 1px 0;
-  width: 400px;
+  width: 300px;
   margin-bottom: -30px;
 }
 
+#inp3{
+  border-width: 0 0 1px 0;
+  width: 200px;
+  margin-bottom: -30px;
+}
 
 #butt{
  margin-top: -60px;
-  width: 400px;
+  width: 300px;
   margin-left: 20px;
 }
 #signUp{
   display: flex;
   flex-direction: row;
-  width: 80%;
-  height: 450px;
-  margin-left: 10%;
+  width: 69%;
+  height: 550px;
+  margin-left: 15%;
   margin-top: 0%;
 }
 #dev{
     color: red;
 }
 #picDiv{
-  height: 450px;
+  height: 550px;
   width: 50%;
-  background-image: url("../assets/img/blogPic.png");
+  background-image: url("../assets/img/blog-3383287_1920.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  margin-left: -0px;
+  margin-left: 0px;
   margin-top: 0px;
-
+  
 }
 #formDiv{
   height: 450px;

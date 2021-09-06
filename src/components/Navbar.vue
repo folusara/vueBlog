@@ -11,8 +11,8 @@
                             <el-menu-item class="itemM" index="5"><router-link to="/contact"> Contact </router-link></el-menu-item>
                             <el-row>   
                             <!-- <div class="line"></div>    -->
-                             <router-link to="/signin"> <el-button  plain round> Log In <span class="fa fa-sign-in-alt"></span></el-button></router-link> 
-                              <router-link to="/signup">  <el-button type="danger" class="bro"  round> Sign Up <span class="fa fa-user-plus"></span></el-button>  </router-link>     
+                             <router-link to="/signin"> <el-button   plain round> Log In <span class="fa fa-sign-in-alt"></span></el-button></router-link> 
+                              <router-link to="/signup">  <el-button style="margin-left:20px" type="danger" class="bro"  round> Sign Up <span class="fa fa-user-plus"></span></el-button>  </router-link>     
                             </el-row>
                     
                   
