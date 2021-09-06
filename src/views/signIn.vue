@@ -1,161 +1,156 @@
 <template>
-<main>
-  
   <div id="bodyy">
-      <div id="sign" class="shadow">
-        <div id="picDiv">
+      <div id="signIn" class="shadow">
+          <div id="picDiv"></div>
+           <div id="formDiv">
+             <h4 class="fw-bolder mt-3 "> <span id="dev">Dev</span>Blogs</h4>
+              <h2 class="">Hello there.</h2>
+              <h5 class="text-center">Login to continue</h5>
+                <div style="margin-top:-20px">
+                  <el-form
+                    @submit.prevent="submitForm()"   :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="50px" class="demo-dynamic">
+                 
+                    <el-form-item prop="email"   :rules="[
+                        { required: true, message: 'Please input email address', trigger: 'blur' },
+                        { type: 'email', message: 'Please input correct email address', trigger: ['blur', 'change'] }
+                      ]"  >
+                <div style="display:flex;flex-direction:row">
+                  <Message />
+                   <el-input id="inp" prefix-icon="el-icon-message" placeholder="Please input Email" v-model="dynamicValidateForm.email"></el-input>
+                
+                </div>
+                 </el-form-item>
+                   <el-form-item prop="password"  :rules="[
+                        { required: true, message: 'Please input password', trigger: 'blur' },
+                      ]"  >
+                     <!-- <el-input placeholder="Please input password" v-model="input" show-password></el-input> -->
+                     <el-input id="inp" placeholder="Please input password" show-password  v-model="dynamicValidateForm.password"></el-input>
+                 </el-form-item>
+                  <el-form-item>
+                      <el-button type="danger"  prefix-icon="el-icon-password" id="butt" round @click="submitForm('dynamicValidateForm')">Submit</el-button>
+                  </el-form-item>
+                </el-form>
 
-        </div>
-        <div id="formDiv">
-          <div id="signUp" class="btn">SignUp</div>
-          <div id="Login" class="btn">Log In</div>
-
- 
-              <v-form @submit.prevent="signUp()" novalidate="true"  >   
-                         
-                   <div id="signform">
-                         <p class="text-center">Get your free <span id="dev">Dev</span>Blogs account </p>
-                          <error-message name="name"></error-message>
-                         
-            <v-field type="text" placeholder="Name" v-model="formData1.name" class="form-control bg-light m-3"></v-field>
-            <v-field type="text" placeholder="Email" v-model="formData1.email" :rules="isRequired" class="form-control bg-light m-3"></v-field>
-            <small>{{message}}</small>
-            <v-field type="password" placeholder="Password" v-model="formData1.password" class="form-control bg-light m-3"></v-field>
-            <button class="btn btn-success rounded  m-3 form-control"> <span v-show="loading" class="spinner-border"></span> Submit</button>
-             <!-- <el-button type="danger" class="bro"  round> <span v-show="loading" class="spinner-border"></span>  Sign Up <span class="fa fa-user-plus"></span></el-button> -->
-
-                   </div>
-              </v-form>
-              <form @submit.prevent="signIn()"  >            
-                   <div id="signform">
-                         <h3 class="display-5 text-center">Log in to <span id="dev">Dev</span>Blogs </h3>
-                         
-        
-            <input type="text" placeholder="Email" v-model="formData2.email" class="form-control bg-light m-3">
-            <input type="password" placeholder="Password" v-model="formData2.password" class="form-control bg-light m-3">
-            <button class="btn btn-success border-2  m-3 form-control"> <span v-show="loading" class="spinner-border"></span> Submit</button>
-
-                   </div>
-              </form>
-             
-        </div>
+                </div>
+            </div>
       </div>
+     
   </div>
-
-</main>
 </template>
 
 <script>
-import { email, required } from '@vuelidate/validators'
-import { useVuelidate } from '@vuelidate/core'
-export default{
-  data(){
-    return{
-       formData1:{
-         name:"",
-         email:"",
-         password:""
+export default {
+   data() {
+      return {
+        dynamicValidateForm: {
+          email: '',
+          password:''
+        },
+      }
     },
-    formData2:{
-        email:"",
-         password:""
-    },
-    loading:false,
-    message:"",
-     errors: [],
-    }
-  },
-   setup: () => ({ v$: useVuelidate() }),
-  validations () {
-    return {
-      formData1: {
-        name: { required },
-        email: { required, email }
+        methods: {
+      submitForm(dynamicValidateForm) {
+        this.$refs[dynamicValidateForm].validate((valid) => {
+          if (valid) {
+            alert('submit!')
+          } else {
+            console.log('error submit!!')
+            return false
+          }
+          console.log(this.dynamicValidateForm);
+          this.resetForm(dynamicValidateForm)
+        })
       },
-       formData2:{
-         name: { required },
-        email: { required, email }
-    },
-    }
-  },
-  methods:{
-    signUp(){
-     
-        console.log(this.formData1);
-       
-    },
-     signIn(){
-        console.log(this.formData2);
-    },
-    // emailValid(){
-    //     var mailFormat =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    //     if(this.formData1.email.match(mailFormat)){
-    //      this.message="Valid Email Address"
-    //     }
-    //        return  this.message="Invalid Email Address"  
-       
-    // },
+      resetForm(dynamicValidateForm) {
+        this.$refs[dynamicValidateForm].resetFields()
+      }
   }
 }
-
 </script>
 
 <style>
 #bodyy{
-  /* background-image: url("../assets/img/notepad-3297994.jpg"); */
-  background-repeat: none;
-  background-size: cover;
-  height: 570px;
-  width: 99%;
-
-  padding-top: 100px;
+  /* background-color: rgb(247,247,247); */
+  height: 700px;
+  width: 101.5%;
+  margin-top: -20px;
+  margin-left: -15px;
+  padding-top: 6%;
 }
 
-.bro{
- margin-left: 30px;
-  }
-#signform{
-  width: 400px;
+h4{
+text-align: center;
+}
+h2{
+text-align: center;
+}
+p{
+text-align: center;
 }
 
 #inp{
-  border-top-width: 0;
-  border-left-width: 0;
-  border-right-width: 0;
+  border-width: 0 0 1px 0;
   width: 400px;
-}
-#sign{
-height: 450px;
-width: 80%;
-margin-left: 10%;
-/* background-color: white; */
-display: flex;
-flex-direction: row;
+  margin-bottom: -30px;
 }
 
-#picDiv{
-    background-image: url("../assets/img/office-581131_1920.jpg");
-  background-repeat: none;
-  background-size:cover;
+
+#butt{
+ margin-top: -60px;
+  width: 400px;
+  margin-left: 20px;
+}
+#signIn{
+  display: flex;
+  flex-direction: row;
+  width: 80%;
   height: 450px;
-  width: 51%;
-  margin-top:0px ;
-  margin-left: 0px;
+  margin-left: 10%;
+  margin-top: 0%;
 }
-
-#formDiv{
-   height: 450px;
-  width: 54%;
-  background-color: white;
-  margin-top: -0px;
-  text-align: center;
-}
-h3{
-  margin-top: 50px;
-}
-
 #dev{
     color: red;
 }
+#picDiv{
+  height: 450px;
+  width: 50%;
+  background-image: url("../assets/img/notepad-3297994.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-left: -0px;
+  margin-top: 0px;
 
+}
+#formDiv{
+  height: 450px;
+  width: 50%;
+  /* background-image: url("../assets/img/notepad-3297994.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; */
+  margin-left: -0px;
+  margin-top: 0px;
+
+}
+@media only screen and (max-width: 700px) {
+   #picDiv{
+        display: none;
+    }
+    #inp{
+  border-width: 0 0 1px 0;
+  width: 200px;
+  margin-left: -50px;
+  margin-bottom: -30px;
+}
+#butt{
+ margin-top: -60px;
+  width: 200px;
+  margin-left: -40px;
+}
+
+h4, p{
+  text-align: center;
+  margin-left: 30px;
+}
+
+}
 </style>
