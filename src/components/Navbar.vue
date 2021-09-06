@@ -12,7 +12,7 @@
                             <el-row>   
                             <!-- <div class="line"></div>    -->
                              <router-link to="/signin"> <el-button  plain round> Log In <span class="fa fa-sign-in-alt"></span></el-button></router-link> 
-                              <router-link to="/signin">  <el-button type="danger" class="bro"  round> Sign Up <span class="fa fa-user-plus"></span></el-button>  </router-link>     
+                              <router-link to="/signup">  <el-button type="danger" class="bro"  round> Sign Up <span class="fa fa-user-plus"></span></el-button>  </router-link>     
                             </el-row>
                     
                   

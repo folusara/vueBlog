@@ -1,11 +1,11 @@
 <template>
+
   <div id="bodyy">
       <div id="signIn" class="shadow">
-          <div id="picDiv"></div>
            <div id="formDiv">
            
             
-              <h3 class="mt-5" >Log in to <span id="dev">Dev</span>Blogs</h3>
+              <h3 class="mt-5" >Sign Up with <span id="dev">Dev</span>Blogs</h3>
                 <div style="margin-top:-20px">
                   <el-form
                     @submit.prevent="submitForm()"   :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="50px" class="demo-dynamic">
@@ -30,11 +30,12 @@
                       <el-button type="danger"  prefix-icon="el-icon-password" id="butt" round @click="submitForm('dynamicValidateForm')">Submit</el-button>
                   </el-form-item>
 
-                  <h5>Not Registered with</h5>
+                  <h5> <router-link to="/signin">Have an <span id="dev">Dev</span>Blogs? Log In </router-link></h5>
                 </el-form>
 
                 </div>
             </div>
+            <div id="picDiv"></div>
       </div>
      
   </div>
@@ -103,7 +104,7 @@ text-align: center;
   width: 400px;
   margin-left: 20px;
 }
-#signIn{
+#signUp{
   display: flex;
   flex-direction: row;
   width: 80%;
@@ -117,7 +118,7 @@ text-align: center;
 #picDiv{
   height: 450px;
   width: 50%;
-  background-image: url("../assets/img/notepad-3297994.jpg");
+  background-image: url("../assets/img/blogPic.png");
   background-repeat: no-repeat;
   background-size: cover;
   margin-left: -0px;
@@ -149,7 +150,7 @@ text-align: center;
   width: 300px;
   margin-left: -40px;
 }
-#signIn{
+#signUp{
   width: 100%;
   margin-left: 10px;
   margin-top: 20px;
@@ -168,7 +169,7 @@ h4, p{
 
 }
 @media only screen and (max-width:414px) {
-  #signIn{
+  #signUp{
   width: 100%;
  
   margin-top: 20px;
@@ -180,7 +181,7 @@ width: 200px;
 font-size: 20px !important;
 }
 @media only screen and (max-width:360px) {
-  #signIn{
+  #signUp{
   width: 100%;
  
   margin-top: 20px;
@@ -193,9 +194,8 @@ font-size: 20px !important;
 }
 }
 @media only screen and (max-width:375px) {
-  #signIn{
+  #signUp{
   width: 100%;
-  
   margin-top: 20px;
 }
     #inp{
@@ -218,3 +218,7 @@ font-size: 20px !important;
 }
 }
 </style>
+
+
+
+
