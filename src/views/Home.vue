@@ -21,14 +21,15 @@
 
    <div id="topnews">
        <el-row>
-            <el-col :span="8"  class="d-flex flex-wrap" style="width:30%" v-for="news in topNews"  :key="news.id" >
+            <el-col :span="8"  class="d-flex flex-wrap" style="width:30%" v-for="news in topNews"  :key="news.source.id" >
               <el-card shadow="hover" style="width:100%" :body-style="{ padding: '10px', height: '450px', width:'200px' }">
                 <img :src="news.urlToImage" class="image" />
                 <div id="top" >
-                  <h4 :href="item.url" target="_blank"> <strong>{{ news.title}}</strong> </h4>
+                  <h4 :href="news.url" target="_blank"> <strong>{{ news.title}}</strong> </h4>
                   <div class="bottom">
+                   <h3>{{news.id}}</h3>
                     <h6 id="description">{{ news.description.substr(0,200) + "..." }}</h6>
-              <router-link class="rout" to="/fullpost/:id"><el-button type="danger" style="margin-top:30px" round class="button">View Post</el-button> </router-link>
+              <router-link class="rout" :to="'/fullpost/'+ news.source.id " ><el-button type="danger" style="margin-top:30px" round class="button">View Post</el-button> </router-link>
 
                   </div>
                 </div>

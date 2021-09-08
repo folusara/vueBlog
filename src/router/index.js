@@ -5,7 +5,6 @@ import Allblogs from '../views/allblogs.vue'
 import Contact from '../views/contact.vue'
 import Signin from '../views/signIn.vue'
 import Signup from '../views/signUp.vue'
-import Signup from '../views/signUp.vue'
 import Fullpost from '../views/fullpost.vue'
 import Notfound from '../views/notfound.vue'
 
