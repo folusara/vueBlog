@@ -17,6 +17,24 @@
       <p>Create a unique and beautiful blog. It's easy and totally free.</p>
     <router-link class="rout" to="/create">   <el-button type="danger" round>  Create Blog  <span class="fa fa-plus"></span> </el-button>   </router-link>      
 
+   </div >
+
+   <div id="topnews">
+       <el-row>
+            <el-col :span="8"  class="d-flex flex-wrap" style="width:30%" v-for="news in topNews"  :key="news.id" >
+              <el-card shadow="hover" style="width:100%" :body-style="{ padding: '10px', height: '450px', width:'200px' }">
+                <img :src="news.urlToImage" class="image" />
+                <div id="top" >
+                  <h4 :href="item.url" target="_blank"> <strong>{{ news.title}}</strong> </h4>
+                  <div class="bottom">
+                    <h6 id="description">{{ news.description.substr(0,200) + "..." }}</h6>
+              <router-link class="rout" to="/fullpost/:id"><el-button type="danger" style="margin-top:30px" round class="button">View Post</el-button> </router-link>
+
+                  </div>
+                </div>
+              </el-card>
+            </el-col>
+        </el-row>
    </div>
   
    <!-- <Footer  /> -->
@@ -29,16 +47,63 @@
 </template>
 
 <script>
+import  getNews   from '../newsservice/post'
 import { Footer } from "@/components/footer.vue";
 export default {
   components:{
     Footer
+  },
+  data(){
+    return{
+    topNews:[]
+    }
+  },
+  methods:{
+ 
+  },
+  mounted(){
+        getNews()
+        .then( res => {
+          console.log(res);
+          this.topNews=res.data.articles
+        })
+        .catch(err=>{
+          console.log(err);
+        })
+    
   }
 
 }
 </script>
 
 <style>
+ .bottom {
+    margin-top: 13px;
+    line-height: 12px;
+    display: flex;
+    flex-direction: column;
+  
+    align-items: center;
+  }
+  #top{
+    width: 350px;
+  }
+  #description{
+     width: 350px;
+  }
+
+  .button {
+    padding: 0;
+    min-height: auto;
+  }
+
+  .image {
+    width: 430px;
+    margin-left: -30px;
+    margin-top: -50px;
+    height: 200px;
+    display: block;
+  }
 #blackheader{
   display: flex;
   flex-direction: row;

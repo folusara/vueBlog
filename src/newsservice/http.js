@@ -1,8 +1,7 @@
 import  axios  from "axios";
 
 const http = axios.create({
-    baseURL: "http://api.lawkonet.com/public/api",
+    baseURL: "https://newsapi.org/v2",
 })
-
 
 export default http
