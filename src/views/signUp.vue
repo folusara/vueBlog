@@ -9,25 +9,25 @@
                 <div style="margin-top:20px">
                   <el-form
                     @submit.prevent="submitForm()"   :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="50px" class="demo-dynamic">
-                   <el-form-item prop="email"   :rules="[
+                   <el-form-item prop="name"   :rules="[
                         { required: true, message: 'Please input Your name', trigger: 'blur' },
                      ]"  >          
-                   <el-input id="inp" prefix-icon="el-icon-user-solid" placeholder="Please input your name" v-model="dynamicValidateForm.name"></el-input>
+                   <el-input id="inp" prefix-icon="el-icon-user-solid" placeholder="Please input your name" v-model.lazy.trim="dynamicValidateForm.name"></el-input>
                  </el-form-item>
                     <el-form-item prop="email"   :rules="[
                         { required: true, message: 'Please input email address', trigger: 'blur' },
                         { type: 'email', message: 'Please input correct email address', trigger: ['blur', 'change'] }
                       ]"  >          
-                   <el-input id="inp" prefix-icon="el-icon-message" placeholder="Please input Email" v-model="dynamicValidateForm.email"></el-input>
+                   <el-input id="inp" prefix-icon="el-icon-message" placeholder="Please input Email" v-model.lazy.trim="dynamicValidateForm.email"></el-input>
                  </el-form-item>
                    <el-form-item prop="password"  :rules="[
                         { required: true, message: 'Please input password', trigger: 'blur' },
                       ]"  >
-                     <!-- <el-input placeholder="Please input password" v-model="input" show-password></el-input> -->
-                     <el-input id="inp" placeholder="Please input password" show-password  v-model="dynamicValidateForm.password"></el-input>
+                     <!-- <el-input placeholder="Please input password" v-model.lazy.trim="input" show-password></el-input> -->
+                     <el-input id="inp" placeholder="Please input password" show-password  v-model.lazy.trim="dynamicValidateForm.password"></el-input>
                  </el-form-item>
                   <el-form-item>
-                      <el-button type="danger"  prefix-icon="el-icon-password" id="butt" round @click="submitForm('dynamicValidateForm')">Submit</el-button>
+                      <el-button type="danger"  prefix-icon="el-icon-password" id="butt" round @click="submitForm()">Submit</el-button>
                   </el-form-item>
 
                   <router-link class="rout" to="/signin"> <h5> Have a <span id="dev">Dev</span>Blogs account? Log In </h5></router-link>
@@ -42,6 +42,8 @@
 </template>
 
 <script>
+
+import { signUp } from '../service/post'
 export default {
    data() {
       return {
@@ -54,20 +56,31 @@ export default {
     },
         methods: {
       submitForm(dynamicValidateForm) {
-        this.$refs[dynamicValidateForm].validate((valid) => {
-          if (valid) {
-            alert('submit!')
-          } else {
-            console.log('error submit!!')
-            return false
-          }
-          console.log(this.dynamicValidateForm);
-          this.resetForm(dynamicValidateForm)
-        })
+        // this.$refs[dynamicValidateForm].validate((valid) => {
+        //   if (valid) {
+        //     alert('submit!');
+         
+        //   } else {
+        //     console.log('error submit!!')
+        //     return false
+        //   }
+         
+                   
+        // })
+         console.log(this.dynamicValidateForm);
+          // this.resetForm(dynamicValidateForm);
+        
+          signUp(this.dynamicValidateForm).then(res =>{
+            console.log(res);
+          }).catch(err =>{
+            console.log(err.response);
+          })
+
       },
-      resetForm(dynamicValidateForm) {
-        this.$refs[dynamicValidateForm].resetFields()
-      }
+      // resetForm(dynamicValidateForm) {
+      //   this.$refs[dynamicValidateForm].resetFields()
+      // }
+      
   }
 }
 </script>

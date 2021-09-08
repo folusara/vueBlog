@@ -27,7 +27,7 @@
                      <el-input id="inp" placeholder="Please input password" show-password  v-model="dynamicValidateForm.password"></el-input>
                  </el-form-item>
                   <el-form-item>
-                      <el-button type="danger"  prefix-icon="el-icon-password" id="butt" round @click="submitForm('dynamicValidateForm')">Submit</el-button>
+                      <el-button type="danger"  prefix-icon="el-icon-password" id="butt" round @click="submitForm()">Submit</el-button>
                   </el-form-item>
 
                       <router-link class="rout" to="/signup"> <h5> You do not have a <span id="dev">Dev</span>Blogs account? Sign Up </h5></router-link>
@@ -41,31 +41,49 @@
 </template>
 
 <script>
+import { signIn } from '../service/post'
+
 export default {
+  props:{
+        loggedIn:false
+  },
    data() {
       return {
         dynamicValidateForm: {
           email: '',
           password:''
-        },
+       
       }
-    },
+    }
+   }
+    ,
         methods: {
       submitForm(dynamicValidateForm) {
-        this.$refs[dynamicValidateForm].validate((valid) => {
-          if (valid) {
-            alert('submit!')
-          } else {
-            console.log('error submit!!')
-            return false
-          }
-          console.log(this.dynamicValidateForm);
-          this.resetForm(dynamicValidateForm)
-        })
-      },
-      resetForm(dynamicValidateForm) {
-        this.$refs[dynamicValidateForm].resetFields()
+        // this.$refs[dynamicValidateForm].validate((valid) => {
+        //   if (valid) {
+        //     alert('submit!')
+        //   } else {
+        //     console.log('error submit!!')
+        //     return false
+        //   }
+        //   console.log(this.dynamicValidateForm);
+        //   this.resetForm(dynamicValidateForm)
+        // })
+         console.log(this.dynamicValidateForm);
+          // this.resetForm(dynamicValidateForm)
+            signIn(this.dynamicValidateForm).then(res =>{
+            console.log(res);
+            localStorage.setItem("token", res.data.token);
+          this.loggedIn=true;
+            this.$router.push('/')
+          }).catch(err =>{
+            console.log(err);
+          })
       }
+      
+      // resetForm(dynamicValidateForm) {
+      //   this.$refs[dynamicValidateForm].resetFields()
+      // }
   }
 }
 </script>
@@ -118,9 +136,11 @@ text-align: center;
   margin-left: 15%;
   margin-top: 0%;
 }
+
 #dev{
     color: red;
 }
+
 a{
   color: black;
 }

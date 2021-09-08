@@ -4,15 +4,15 @@
                     text-color="rgb(28,35,44)"
                     active-text-color="red"
                     class="el-menu-demo" mode="horizontal" >
-                             <el-menu-item class="itemM" index="1"> <router-link to="/" >  <span class="fw-bolder" id="dev">Dev</span><span class="fw-bolder">Blogs</span> </router-link> </el-menu-item>
-                           <el-menu-item class="itemM" index="2">  <router-link to="/"> Home </router-link>  </el-menu-item>
-                            <el-menu-item class="itemM" index="3">  <router-link to="/create"> Create Blog </router-link>  </el-menu-item>     
+                             <el-menu-item class="itemM"  index="1"> <router-link to="/" >  <span class="fw-bolder" id="dev">Dev</span><span class="fw-bolder">Blogs</span> </router-link> </el-menu-item>
+                           <el-menu-item class="itemM"  style="margin-left:400px" index="2">  <router-link to="/"> Home </router-link>  </el-menu-item>
+                            <el-menu-item v-show="loggedIn" class="itemM" index="3">  <router-link to="/create"> Create Blog </router-link>  </el-menu-item>     
                             <el-menu-item class="itemM" index="4" > <router-link to="/allblogs">  Blogs </router-link> </el-menu-item>
                             <el-menu-item class="itemM" index="5"><router-link to="/contact"> Contact </router-link></el-menu-item>
-                            <el-row>   
+                            <el-row class="butt" style="margin-left:300px">   
                             <!-- <div class="line"></div>    -->
-                             <router-link to="/signin"> <el-button   plain round> Log In <span class="fa fa-sign-in-alt"></span></el-button></router-link> 
-                              <router-link to="/signup">  <el-button style="margin-left:20px" type="danger" class="bro"  round> Sign Up <span class="fa fa-user-plus"></span></el-button>  </router-link>     
+                             <router-link to="/signin"> <el-button v-show="loggedIn==false"   plain round> Log In <span class="fa fa-sign-in-alt"></span></el-button></router-link> 
+                              <router-link to="/signup">  <el-button  v-show="loggedIn==false"    style="margin-left:20px" type="danger" class="bro"  round> Sign Up <span class="fa fa-user-plus"></span></el-button>  </router-link>     
                             </el-row>
                     
                   
@@ -24,10 +24,19 @@
 
 <script>
 export default {
+      props:{
+        loggedIn:false
+  },
     data(){
         return{
-         
+         loggedIn:false
         }
+    },
+    methods:{
+
+    },
+    mounted(){
+
     }
 
 }
@@ -50,6 +59,8 @@ export default {
     color: red;
 }
 
+
+
 :link{
     text-decoration: none;
     font-weight: 300;
@@ -68,5 +79,11 @@ export default {
    display: flex;
    flex-direction: row;
     align-content: flex-end;
+}
+
+@media only screen and (max-width: 700px) {
+    .butt{
+        margin-left: 0px !important;
+    }
 }
 </style>
