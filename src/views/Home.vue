@@ -20,19 +20,19 @@
    </div >
 
    <div id="topnews">
-       <el-row>
-            <el-col :span="8"  class="d-flex flex-wrap" style="width:30%" v-for="news in topNews"  :key="news.source.id" >
-              <el-card shadow="hover" style="width:100%" :body-style="{ padding: '10px', height: '450px', width:'200px' }">
+       <el-row id="topNews">
+            <el-col :span="7"  class="d-flex flex-wrap"  v-for="news in topNews"  :key="news.source.id" >
+              <el-card shadow="hover" style="width:120%" :body-style="{ padding: '5px'}">
                 <img :src="news.urlToImage" class="image" />
                 <div id="top" >
-                  <h4 :href="news.url" target="_blank"> <strong>{{ news.title}}</strong> </h4>
-                  <div class="bottom">
-                   <h3>{{news.id}}</h3>
-                    <h6 id="description">{{ news.description.substr(0,200) + "..." }}</h6>
-              <router-link class="rout" :to="'/fullpost/'+ news.source.id " ><el-button type="danger" style="margin-top:30px" round class="button">View Post</el-button> </router-link>
-
-                  </div>
+                  <h6 :href="news.url" target="_blank"> <strong>{{ news.title}}</strong> </h6>
                 </div>
+                <div class="bottom">
+                    <h3>{{news.id}}</h3>
+                    <h6 id="description">{{ news.description.substr(0,150) + "..." }}</h6>
+                    <router-link class="rout" :to="'/fullpost/'+ news.source.id " ><el-button type="danger" style="margin-top:30px" round class="button">View Post</el-button> </router-link>
+               </div>
+              
               </el-card>
             </el-col>
         </el-row>
@@ -83,14 +83,32 @@ export default {
     line-height: 12px;
     display: flex;
     flex-direction: column;
-  
     align-items: center;
+    
   }
+  /* #topNews{
+    margin-left: 100px;
+  } */
   #top{
-    width: 350px;
+    width: 300px;
+    text-align: justify;
+      margin-right: 20px;
+      margin-left: 20px;
+
+  }
+    #top > h6{
+    
+    width: 300px;
+     margin-left: -10px;
+    /* margin-right: 170px; */
   }
   #description{
-     width: 350px;
+     width: 300px;
+  /* padding: 15px; */
+     text-align: justify;
+      margin-right: 20px;
+      margin-left: 20px;
+     
   }
 
   .button {
@@ -99,7 +117,7 @@ export default {
   }
 
   .image {
-    width: 430px;
+    width: 450px;
     margin-left: -30px;
     margin-top: -50px;
     height: 200px;

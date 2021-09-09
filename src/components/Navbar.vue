@@ -6,7 +6,7 @@
                     class="el-menu-demo" mode="horizontal" >
                              <el-menu-item class="itemM"  index="1"> <router-link to="/" >  <span class="fw-bolder" id="dev">Dev</span><span class="fw-bolder">Blogs</span> </router-link> </el-menu-item>
                            <el-menu-item class="itemM"  style="margin-left:400px" index="2">  <router-link to="/"> Home </router-link>  </el-menu-item>
-                            <el-menu-item v-show="loggedIn" class="itemM" index="3">  <router-link to="/create"> Create Blog </router-link>  </el-menu-item>     
+                            <el-menu-item  class="itemM" index="3">  <router-link to="/create"> Create Blog </router-link>  </el-menu-item>     
                             <el-menu-item class="itemM" index="4" > <router-link to="/allblogs">  Blogs </router-link> </el-menu-item>
                             <el-menu-item class="itemM" index="5"><router-link to="/contact"> Contact </router-link></el-menu-item>
                             <el-row class="butt" style="margin-left:300px">   
