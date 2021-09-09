@@ -27,7 +27,7 @@
                      <el-input id="inp" placeholder="Please input password" show-password  v-model.lazy.trim="dynamicValidateForm.password"></el-input>
                  </el-form-item>
                   <el-form-item>
-                      <el-button type="danger"  prefix-icon="el-icon-password" id="butt" round @click="submitForm()">Submit</el-button>
+                      <el-button type="danger"  prefix-icon="el-icon-password" id="butt" round @click="submitForm('dynamicValidateForm')">Submit</el-button>
                   </el-form-item>
 
                   <router-link class="rout" to="/signin"> <h5> Have a <span id="dev">Dev</span>Blogs account? Log In </h5></router-link>
@@ -52,36 +52,39 @@ export default {
           email: '',
           password:''
         },
+        objform:{}
       }
     },
         methods: {
       submitForm(dynamicValidateForm) {
         // this.$refs[dynamicValidateForm].validate((valid) => {
-        //   if (valid) {
-        //     alert('submit!');
-         
-        //   } else {
-        //     console.log('error submit!!')
-        //     return false
-        //   }
-         
-                   
-        // })
-         console.log(this.dynamicValidateForm);
+        //       if (valid) {
+    
+            // alert('submit!');
+              // this.objform = Object.fromEntries(this.$refs[dynamicValidateForm])
+              // console.log(this.dynamicValidateForm);
+              // console.log(this.objform);
           // this.resetForm(dynamicValidateForm);
-        
+
+          // } else {
+          //   console.log('error submit!!')
+          //   return false
+          // }
           signUp(this.dynamicValidateForm).then(res =>{
             console.log(res);
           }).catch(err =>{
             console.log(err.response);
           })
+                   
+        }
+       
 
-      },
+         
+         
+      }//,
       // resetForm(dynamicValidateForm) {
       //   this.$refs[dynamicValidateForm].resetFields()
       // }
-      
-  }
 }
 </script>
 

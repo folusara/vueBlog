@@ -7,7 +7,7 @@
           <p>Stay updated with the latest on politics,sports, religion, finance and Technology. </p>
           <router-link class="rout" to="/allblogs"> <el-button type="danger" round> View Blogs  <span class="fa fa-hand-point-right"></span>  </el-button> </router-link>        
       </div>
-      <div  id="picDiv" >
+      <div  id="picDiv" class="animated fadeInUp" >
         <img src="../assets/img/blogPic.png" alt="">
       </div>
   </div>
@@ -20,17 +20,19 @@
    </div >
 
    <div id="topnews">
+     <h1>Top Stories today...</h1>
        <el-row id="topNews">
-            <el-col :span="7"  class="d-flex flex-wrap"  v-for="news in topNews"  :key="news.source.id" >
-              <el-card shadow="hover" style="width:120%" :body-style="{ padding: '5px'}">
+          <el-skeleton v-show="loaded" :rows="5" animated />
+            <el-col :span="7"     v-for="news in topNews" id="car"   :key="news.source.id" >
+              <el-card class="animated fadeIn"  id="card"  shadow="hover" style="width:110%; padding:'50px';" :body-style="{ padding: 'px'}">
                 <img :src="news.urlToImage" class="image" />
                 <div id="top" >
                   <h6 :href="news.url" target="_blank"> <strong>{{ news.title}}</strong> </h6>
                 </div>
                 <div class="bottom">
                     <h3>{{news.id}}</h3>
-                    <h6 id="description">{{ news.description.substr(0,150) + "..." }}</h6>
-                    <router-link class="rout" :to="'/fullpost/'+ news.source.id " ><el-button type="danger" style="margin-top:30px" round class="button">View Post</el-button> </router-link>
+                    <h6 id="description">{{ news.description.substr(0,100) + "..." }}</h6>
+                    <router-link class="rout" :to="'/fullpost/'+ news.source.id " ><el-button type="danger" style="margin-top:30px;margin-left:130px" round class="button">View Post</el-button> </router-link>
                </div>
               
               </el-card>
@@ -56,17 +58,20 @@ export default {
   },
   data(){
     return{
-    topNews:[]
+    topNews:[],
+    loaded:false
     }
   },
   methods:{
  
   },
   mounted(){
+    this.loaded=true
         getNews()
         .then( res => {
           console.log(res);
           this.topNews=res.data.articles
+           this.loaded=false
         })
         .catch(err=>{
           console.log(err);
@@ -86,9 +91,10 @@ export default {
     align-items: center;
     
   }
-  /* #topNews{
-    margin-left: 100px;
-  } */
+  
+  #topNews{
+    margin-left: 120px;
+  }
   #top{
     width: 300px;
     text-align: justify;
@@ -107,12 +113,13 @@ export default {
   /* padding: 15px; */
      text-align: justify;
       margin-right: 20px;
-      margin-left: 20px;
+      margin-left: -70px;
      
   }
 
   .button {
     padding: 0;
+    margin-left: -200px;
     min-height: auto;
   }
 
@@ -202,6 +209,15 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
  }
  #picDiv{
    display: none;
+ }
+ #card{
+   margin-right: 1000px;
+   width: 200% !important;
+ }
+ #car{
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
  }
  #welDiv > h1{
 font-size: 30px;
