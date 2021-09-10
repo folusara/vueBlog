@@ -1,7 +1,7 @@
 <template>
 
-  <div id="bodyy">
-      <div id="signUp" class="shadow">
+  <div id="bodyyy">
+      <div id="signUp" class="shadow mt-2">
            <div id="formDiv">
            
             
@@ -72,6 +72,7 @@ export default {
           // }
           signUp(this.dynamicValidateForm).then(res =>{
             console.log(res);
+              this.$router.push('/')
           }).catch(err =>{
             console.log(err.response);
           })
@@ -89,13 +90,14 @@ export default {
 </script>
 
 <style>
-#bodyy{
-  /* background-color: rgb(247,247,247); */
+#bodyyy{
+  background-color: rgb(247,247,247); 
+  background-image: url('../assets/img/andrew-neel-cckf4TsHAuw-unsplash.jpg');
   height: 700px;
   width: 101.5%;
   margin-top: -20px;
   margin-left: -15px;
-  padding-top: 6%;
+  padding-top: 5%;
 }
 a{
   color: black;
@@ -138,7 +140,7 @@ text-align: center;
   width: 69%;
   height: 550px;
   margin-left: 15%;
-  margin-top: 0%;
+ 
 }
 #dev{
     color: red;
@@ -146,7 +148,7 @@ text-align: center;
 #picDiv{
   height: 550px;
   width: 50%;
-  background-image: url("../assets/img/blog-3383287_1920.jpg");
+  background-image: url("../assets/img/corinne-kutz-tMI2_-r5Nfo-unsplash.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   margin-left: 0px;

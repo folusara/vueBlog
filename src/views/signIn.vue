@@ -1,7 +1,7 @@
 <template>
-  <div id="bodyy">
+  <div id="signInbody">
       <div id="signIn" class="shadow">
-          <div id="picDiv"></div>
+          <div id="signInpicDiv"></div>
            <div id="formDiv">
            
             
@@ -14,11 +14,8 @@
                         { required: true, message: 'Please input email address', trigger: 'blur' },
                         { type: 'email', message: 'Please input correct email address', trigger: ['blur', 'change'] }
                       ]"  >
-                <div style="display:flex;flex-direction:row">
-                  <Message />
+               
                    <el-input id="inp1" prefix-icon="el-icon-message" placeholder="Please input Email" v-model="dynamicValidateForm.email"></el-input>
-                
-                </div>
                  </el-form-item>
                    <el-form-item prop="password"  :rules="[
                         { required: true, message: 'Please input password', trigger: 'blur' },
@@ -27,7 +24,9 @@
                      <el-input id="inp" placeholder="Please input password" show-password  v-model="dynamicValidateForm.password"></el-input>
                  </el-form-item>
                   <el-form-item>
-                      <el-button type="danger"  prefix-icon="el-icon-password" id="butt" round @click="submitForm()">Submit</el-button>
+                      <el-button type="danger"  prefix-icon="el-icon-password" id="butt" round @click="submitForm()">
+                     <span id="spinner" v-show="loading" class="spinner-border"></span>
+                      Submit</el-button>
                   </el-form-item>
 
                       <router-link class="rout" to="/signup"> <h5> You do not have a <span id="dev">Dev</span>Blogs account? Sign Up </h5></router-link>
@@ -53,7 +52,8 @@ export default {
           email: '',
           password:''
        
-      }
+      },
+      loading:false
     }
    }
     ,
@@ -69,15 +69,18 @@ export default {
         //   console.log(this.dynamicValidateForm);
         //   this.resetForm(dynamicValidateForm)
         // })
+         this.loading=true
          console.log(this.dynamicValidateForm);
           // this.resetForm(dynamicValidateForm)
             signIn(this.dynamicValidateForm).then(res =>{
             console.log(res);
             localStorage.setItem("token", res.data.token);
           this.loggedIn=true;
+           this.loading=false
             this.$router.push('/')
           }).catch(err =>{
             console.log(err);
+             this.loading=false
           })
       }
       
@@ -89,8 +92,12 @@ export default {
 </script>
 
 <style>
-#bodyy{
-  /* background-color: rgb(247,247,247); */
+#spinner{
+  height: 20px;
+  width: 20px;
+}
+#signInbody{
+   background-image: url("../assets/img/stil-flRm0z3MEoA-unsplash.jpg"); 
   height: 700px;
   width: 101.5%;
   margin-top: -20px;
@@ -107,6 +114,10 @@ text-align: center;
 }
 p{
 text-align: center;
+}
+h5{
+  
+  width: 100%;
 }
 
 #inp1{
@@ -148,10 +159,10 @@ a{
   color: black;
   text-align: center;
 }
-#picDiv{
+#signInpicDiv{
   height: 450px;
   width: 50%;
-  background-image: url("../assets/img/notepad-3297994.jpg");
+  background-image: url("../assets/img/stil-flRm0z3MEoA-unsplash.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   margin-left: -0px;
@@ -166,14 +177,21 @@ a{
 
 }
 @media only screen and (max-width: 700px) {
-   #picDiv{
+   #signInpicDiv{
         display: none;
     }
     #inp{
   border-width: 0 0 1px 0;
   width: 300px;
-  margin-left: -50px;
+  margin-left: -60px !important;
   margin-bottom: -30px;
+}
+  #inp1{
+  border-width: 0 0 1px 0;
+  width: 300px;
+  margin-bottom: -30px;
+  margin-top: 30px;
+  margin-left: -60px !important;
 }
 #butt{
  margin-top: -60px;
@@ -199,6 +217,19 @@ h4, p{
 
 }
 @media only screen and (max-width:414px) {
+  #inp1{
+  border-width: 0 0 1px 0;
+  width: 300px;
+  margin-bottom: -30px;
+  margin-left: -40px;
+}
+  #inp{
+  border-width: 0 0 1px 0;
+  width: 300px;
+  margin-bottom: 30px;
+  margin-left: -40px;
+}
+
   #signIn{
   width: 100%;
  
@@ -209,6 +240,17 @@ text-align: center!important;
 margin-left: 70px;
 width: 200px;
 font-size: 20px !important;
+}
+#butt{
+ margin-top: -60px;
+  width:  300px !important;
+  margin-left: -40px !important;
+}
+h5{
+  width: 100% !important;
+text-align: center!important;
+margin-left: 70px;
+font-size: 15px !important;
 }
 @media only screen and (max-width:360px) {
   #signIn{

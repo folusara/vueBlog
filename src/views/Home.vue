@@ -20,11 +20,11 @@
    </div >
 
    <div id="topnews">
-     <h1>Top Stories today...</h1>
-       <el-row id="topNews">
+     <h1 class="text-center">Top Stories today...</h1>
+       <!-- <el-row id="topNews">
           <el-skeleton v-show="loaded" :rows="5" animated />
             <el-col :span="7"     v-for="news in topNews" id="car"   :key="news.source.id" >
-              <el-card class="animated fadeIn"  id="card"  shadow="hover" style="width:110%; padding:'50px';" :body-style="{ padding: 'px'}">
+              <el-card class="animated fadeIn"  id="card"  shadow="hover"  :body-style="{ padding: '0px',margin:'30px'}">
                 <img :src="news.urlToImage" class="image" />
                 <div id="top" >
                   <h6 :href="news.url" target="_blank"> <strong>{{ news.title}}</strong> </h6>
@@ -38,6 +38,14 @@
               </el-card>
             </el-col>
         </el-row>
+        <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div> -->
    </div>
   
    <!-- <Footer  /> -->
@@ -93,7 +101,7 @@ export default {
   }
   
   #topNews{
-    margin-left: 120px;
+    margin-left: 80px;
   }
   #top{
     width: 300px;

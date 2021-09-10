@@ -8,7 +8,7 @@
                            <el-menu-item class="itemM1"  style="margin-left:400px" index="2">  <router-link to="/"> Home </router-link>  </el-menu-item>
                             <el-menu-item  class="itemM" index="3">  <router-link to="/create"> Create Blog </router-link>  </el-menu-item>     
                             <el-menu-item class="itemM" index="4" > <router-link to="/allblogs">  Blogs </router-link> </el-menu-item>
-                            <el-menu-item class="itemM" index="5"><router-link to="/contact"> Contact </router-link></el-menu-item>
+                            <!-- <el-menu-item class="itemM" index="5"><router-link to="/contact"> Contact </router-link></el-menu-item> -->
                             <el-row class="butt" style="margin-left:200px">   
                             <!-- <div class="line"></div>    -->
                              <router-link to="/signin"> <el-button v-show="loggedIn==false"   plain round> Log In <span class="fa fa-sign-in-alt"></span></el-button></router-link> 
