@@ -22,12 +22,13 @@ export default {
 },
 methods:{
        getArticle(blogId){
-           console.log(this.blogId);
+          
             getNews(blogId)
             .then( res =>{
+                console.log(this.blogId);
                 console.log(res.data.articles);
-                this.article= res.data.articles.filter(blog=>{
-                    return blog.source.id == blogId
+                this.article = res.data.articles.filter(blog=>{
+                    return blog.author === blogId
                 })
                 console.log(this.article);
             }).catch(err=>{
@@ -38,7 +39,7 @@ methods:{
    mounted(){
         let pm = this.$route.params;
         console.log(pm);
-        this.blogId=pm.id
+        this.blogId=pm.author
        this.getArticle(this.blogId)
     }
 

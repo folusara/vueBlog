@@ -20,32 +20,18 @@
    </div >
 
    <div id="topnews">
-     <h1 class="text-center">Top Stories today...</h1>
-       <!-- <el-row id="topNews">
-          <el-skeleton v-show="loaded" :rows="5" animated />
-            <el-col :span="7"     v-for="news in topNews" id="car"   :key="news.source.id" >
-              <el-card class="animated fadeIn"  id="card"  shadow="hover"  :body-style="{ padding: '0px',margin:'30px'}">
-                <img :src="news.urlToImage" class="image" />
-                <div id="top" >
-                  <h6 :href="news.url" target="_blank"> <strong>{{ news.title}}</strong> </h6>
-                </div>
-                <div class="bottom">
-                    <h3>{{news.id}}</h3>
-                    <h6 id="description">{{ news.description.substr(0,100) + "..." }}</h6>
-                    <router-link class="rout" :to="'/fullpost/'+ news.source.id " ><el-button type="danger" style="margin-top:30px;margin-left:130px" round class="button">View Post</el-button> </router-link>
-               </div>
-              
-              </el-card>
-            </el-col>
-        </el-row>
-        <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+      <h1 class="text-center">Top Stories today...</h1>
+      <el-skeleton v-show="loaded" :rows="5" animated />
+        <div id="topnewsCard" class="d-flex flex-row flex-wrap ">
+          <div class="card shadow"  v-for="news in topNews" :key="news.source.id"  style="width: 18rem;">
+          <img class="card-img-top" :src="news.urlToImage" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"><strong> {{ news.title }} </strong></h5>
+              <!-- <p  id="descriptionn" class="card-text"> {{ news.description.substring(0,100) + "..." }} </p> -->
+              <router-link class="rout" :to="'/fullpost/'+ news.author" ><el-button type="danger" style="margin-top:30px;margin-left:130px" round class="button">View Post</el-button> </router-link>
+            </div>
+          </div> 
         </div>
-      </div> -->
    </div>
   
    <!-- <Footer  /> -->
@@ -99,6 +85,9 @@ export default {
     align-items: center;
     
   }
+  #topnewscard{
+    margin-left: 80%;
+  }
   
   #topNews{
     margin-left: 80px;
@@ -110,13 +99,10 @@ export default {
       margin-left: 20px;
 
   }
-    #top > h6{
-    
-    width: 300px;
-     margin-left: -10px;
-    /* margin-right: 170px; */
-  }
-  #description{
+ .card-title{
+   margin-left: 0px;
+ }
+  #descriptionn{
      width: 300px;
   /* padding: 15px; */
      text-align: justify;

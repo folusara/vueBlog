@@ -16,7 +16,7 @@ const routes = [
   { path: '/allblogs', component: Allblogs },
   { path: '/contact', component: Contact },
   { path: '/signin', component: Signin },
-  { path: '/fullpost/:id', component: Fullpost },
+  { path: '/fullpost/:author', component: Fullpost },
   { path: '/signup', component: Signup },
   { path: '/:catchAll(.*)', redirect:Notfound},
 
