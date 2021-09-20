@@ -6,6 +6,7 @@ import Contact from '../views/contact.vue'
 import Signin from '../views/signIn.vue'
 import Signup from '../views/signUp.vue'
 import Fullpost from '../views/fullpost.vue'
+import Fullblog from '../views/fullblog.vue'
 import Notfound from '../views/notfound.vue'
 
 
@@ -17,6 +18,7 @@ const routes = [
   { path: '/contact', component: Contact },
   { path: '/signin', component: Signin },
   { path: '/fullpost/:author', component: Fullpost },
+  { path: '/fullblog/:id', component: Fullblog },
   { path: '/signup', component: Signup },
   { path: '/:catchAll(.*)', redirect:Notfound},
 

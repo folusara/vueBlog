@@ -92,7 +92,7 @@ export default {
 <style>
 #bodyyy{
   background-color: rgb(247,247,247); 
-  background-image: url('../assets/img/andrew-neel-cckf4TsHAuw-unsplash.jpg');
+  /* background-image: url('../assets/img/andrew-neel-cckf4TsHAuw-unsplash.jpg'); */
   height: 700px;
   width: 101.5%;
   margin-top: -20px;
@@ -148,7 +148,7 @@ text-align: center;
 #picDiv{
   height: 550px;
   width: 50%;
-  background-image: url("../assets/img/corinne-kutz-tMI2_-r5Nfo-unsplash.jpg");
+  background-image: url("../assets/img/pexels-miguel-á-padriñán-1591056.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   margin-left: 0px;

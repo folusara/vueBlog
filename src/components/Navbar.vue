@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class=" sticky-top">
             <el-menu  id="navbarNavAltMarkup"   background-color="white"
                     text-color="rgb(28,35,44)"
                     active-text-color="red"

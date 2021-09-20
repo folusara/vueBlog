@@ -12,9 +12,10 @@
                   <el-form-item prop="name"  >
                      <el-input class="inp" style="width:400px" placeholder="Please write your name as the Author" prefix-icon="el-icon-user-solid" v-model="dynamicValidateForm.author"></el-input>
                  </el-form-item>
-                   <div  placeholder="title" style="max-width:410px" id="content" class=" bg-light" contenteditable="true">
+                   <!-- <div   style="max-width:410px" id="content" class=" bg-light" contenteditable="true">
                         Write your article, your way!
-                   </div>               
+                   </div>   -->
+                   <textarea placeholder="title" name="" id="content" class=" bg-light" cols="10" rows="10"></textarea>             
                    <div id="buttdiv"  style="margin-left:250px">
                      <button class="btn m-1" style="background-color:red;color:white" @click.prevent="boldd()"> B</button>
                     <button class="btn m-1"  style="background-color:red;color:white" @click.prevent="I()"> I</button>
@@ -94,8 +95,19 @@ methods:{
         .then(res=>{
             console.log(res);
              this.loading=false
+             this.$notify({
+               title: "Log_in",
+               message: res.data.message,
+               type: "success"
+             });
+             this.$router.push({path:"allblogs"})
         }).catch(err=>{
             console.log(err.response);
+              this.$notify({
+               title: "Log_in",
+               message: err.response.data.message,
+               type: "warning"
+             });
              this.loading=true
         })
     }
@@ -121,10 +133,10 @@ h2{
   margin-top: 40px;
 }
 #bodyy{
-  height: 700px;
+  height: 1000px;
   width: 100%;
   /* margin-top: 500px; */
-  background-image: url('../assets/img/work-4997565_1280.png');
+  background-image: url('../assets/img/pexels-alena-koval-826114.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0.7;
@@ -143,7 +155,7 @@ h2{
     margin-left: 200px;
   }
   #content{
-       width: 400px;
+       width: 300px;
        margin-left: 160px;
        /* border-radius: 5px; */
        color: black;

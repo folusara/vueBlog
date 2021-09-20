@@ -74,10 +74,15 @@ export default {
           // this.resetForm(dynamicValidateForm)
             signIn(this.dynamicValidateForm).then(res =>{
             console.log(res);
-            localStorage.setItem("token", res.data.token);
-          this.loggedIn=true;
-           this.loading=false
-            this.$router.push('/')
+             localStorage.setItem("token", res.data.token);
+          // this.loggedIn=true;
+            this.$notify({
+               title: "Log_in",
+               message: res.data.message,
+               type: "success"
+             });          
+             this.$router.push({path:"/"})
+              this.loading=false
           }).catch(err =>{
             console.log(err);
              this.loading=false
@@ -97,7 +102,8 @@ export default {
   width: 20px;
 }
 #signInbody{
-   background-image: url("../assets/img/stil-flRm0z3MEoA-unsplash.jpg"); 
+   /* background-image: url("../assets/img/stil-flRm0z3MEoA-unsplash.jpg");  */
+  /* background-color: rgb(247,247,247);*/
   height: 700px;
   width: 101.5%;
   margin-top: -20px;
@@ -202,6 +208,7 @@ a{
   width: 100%;
   margin-left: 10px;
   margin-top: 20px;
+  color:white
 }
 
 h3{
@@ -232,7 +239,6 @@ h4, p{
 
   #signIn{
   width: 100%;
- 
   margin-top: 20px;
 }
 h3{

@@ -28,7 +28,7 @@
             <div class="card-body">
               <h5 class="card-title"><strong> {{ news.title }} </strong></h5>
               <!-- <p  id="descriptionn" class="card-text"> {{ news.description.substring(0,100) + "..." }} </p> -->
-              <router-link class="rout" :to="'/fullpost/'+ news.author" ><el-button type="danger" style="margin-top:30px;margin-left:130px" round class="button">View Post</el-button> </router-link>
+              <router-link class="rout" :to="'/fullpost/'+ news.title" ><el-button type="danger" style="margin-top:30px;margin-left:130px" round class="button">View Post</el-button> </router-link>
             </div>
           </div> 
         </div>
@@ -140,7 +140,7 @@ export default {
 }
 
 #second{
-  margin-top: 300px;
+  margin-top: 280px;
   height: 350px;
   width: 100%;
   background-color: rgb(28,35,44);
